@@ -10,10 +10,10 @@ values
         {<PORT_A>, <PORT_B>, <PORT_C>, <PORT_D>};
 functions
     everyPortHasState : SwitchBox -> bool
-    everyPortHasState(mk_SwitchBox(ps, cs)) == dom ps = ALL_PORTS;
+    everyPortHasState(mk_SwitchBox(ps, -)) == dom ps = ALL_PORTS;
     
     connectionsPartitionPorts : SwitchBox -> bool
-    connectionsPartitionPorts(mk_SwitchBox(ps, cs)) ==
+    connectionsPartitionPorts(mk_SwitchBox(-, cs)) ==
         dunion cs = ALL_PORTS
         and (forall c in set cs & dunion (cs \ {c}) inter c = {});
     
@@ -155,4 +155,31 @@ functions
     
     withoutEmpty : set of (set of Port) -> set of (set1 of Port)
     withoutEmpty(xss) == {xs | xs in set xss & xs <> {}};
+traces
+    ALL_PAIRS:
+        let p1, p2 in set ALL_PORTS
+        in
+            let s1, s2 in set {<OFF>, <POWER_OUT>, <POWER_OUT>}
+            in
+                (setPort(p1, s1);
+                setPort(p2, s2));
+    
+    ALL_TRIPLES:
+        let p1, p2, p3 in set ALL_PORTS
+        in
+            let s1, s2, s3 in set {<OFF>, <POWER_OUT>, <POWER_OUT>}
+            in
+                (setPort(p1, s1);
+                setPort(p2, s2);
+                setPort(p3, s3));
+    
+    ALL_QUADS:
+        let p1, p2, p3, p4 in set ALL_PORTS
+        in
+            let s1, s2, s3, s4 in set {<OFF>, <POWER_OUT>, <POWER_OUT>}
+            in
+                (setPort(p1, s1);
+                setPort(p2, s2);
+                setPort(p3, s3);
+                setPort(p4, s4));
 end SwitchBox
