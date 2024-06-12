@@ -159,7 +159,7 @@ traces
     ALL_PAIRS:
         let p1, p2 in set ALL_PORTS
         in
-            let s1, s2 in set {<OFF>, <POWER_OUT>, <POWER_OUT>}
+            let s1, s2 in set {<OFF>, <POWER_IN>, <POWER_OUT>}
             in
                 (setPort(p1, s1);
                 setPort(p2, s2));
@@ -167,7 +167,7 @@ traces
     ALL_TRIPLES:
         let p1, p2, p3 in set ALL_PORTS
         in
-            let s1, s2, s3 in set {<OFF>, <POWER_OUT>, <POWER_OUT>}
+            let s1, s2, s3 in set {<OFF>, <POWER_IN>, <POWER_OUT>}
             in
                 (setPort(p1, s1);
                 setPort(p2, s2);
@@ -176,7 +176,7 @@ traces
     ALL_QUADS:
         let p1, p2, p3, p4 in set ALL_PORTS
         in
-            let s1, s2, s3, s4 in set {<OFF>, <POWER_OUT>, <POWER_OUT>}
+            let s1, s2, s3, s4 in set {<OFF>, <POWER_IN>, <POWER_OUT>}
             in
                 (setPort(p1, s1);
                 setPort(p2, s2);
